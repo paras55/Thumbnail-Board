@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Thumbnail Board Extension",
+  "version": "1.0",
+  "description": "Save YouTube thumbnails to your Thumbnail Board",
+  "permissions": ["activeTab", "storage"],
+  "host_permissions": [
+    "http://localhost:5000/*"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "icons": {
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}

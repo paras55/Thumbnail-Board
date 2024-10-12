@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Thumbnail Board</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar for Boards -->
+        <div class="sidebar">
+            <h2>Boards</h2>
+            <ul class="board-list">
+                {% for board in boards %}
+                <li class="board-item">
+                    <a href="{{ url_for('switch_board', board_id=board.id) }}" class="{% if board.id == active_board.id %}active{% endif %}">
+                        {{ board.name }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            <form action="/new_board" method="post">
+                <button type="submit" class="new-board-button">New Board</button>
+            </form>
+        </div>
+
+        <!-- Main content area -->
+        <div class="main-content">
+            <div class="header">
+                <h1>YouTube Thumbnail Board</h1>
+                <p>Paste a YouTube link and see the thumbnail displayed below.</p>
+            </div>
+            <form action="/" method="post" class="form-container">
+                <input type="hidden" name="board_id" value="{{ active_board.id }}">  <!-- Pass current board ID -->
+                <input id="youtube-link" name="youtube_link" placeholder="Paste YouTube link here" type="text" required>
+                <button type="submit">Fetch Thumbnail</button>
+            </form>
+
+            <!-- Thumbnails Section -->
+            <h2>Thumbnails for {{ active_board.name }}</h2>
+            <div class="thumbnail-grid">
+                {% for thumbnail in thumbnails %}
+                <div class="thumbnail">
+                    <img src="{{ thumbnail.thumbnail_url }}" alt="Thumbnail">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

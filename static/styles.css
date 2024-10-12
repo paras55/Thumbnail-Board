@@ -1,0 +1,179 @@
+/* Global Dark Mode Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #181818;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+}
+
+/* Flexbox Layout */
+.app-container {
+    display: flex;
+    height: 100vh;  /* Full viewport height */
+    overflow: hidden;  /* Prevent overflow */
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;  /* Fixed width */
+    background-color: #202020;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 100vh;  /* Full height sidebar */
+    border-right: 1px solid #333;
+    position: fixed;  /* Fixed sidebar */
+    overflow-y: auto;  /* Scrollable if content overflows */
+}
+
+.sidebar h2 {
+    font-size: 1.5rem;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.board-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.board-item {
+    margin-bottom: 10px;
+}
+
+.board-item a {
+    display: block;
+    padding: 10px;
+    background-color: #303030;
+    color: #B3B3B3;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-align: center;
+}
+
+.board-item a.active {
+    background-color: #FF0000;
+    color: #FFFFFF;
+}
+
+.board-item a:hover {
+    background-color: #FF0000;
+    color: #FFFFFF;
+}
+
+/* New Board Button */
+.new-board-button {
+    background-color: #FF0000;
+    color: white;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.new-board-button:hover {
+    background-color: #CC0000;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 250px;  /* Ensure it doesn't overlap the fixed sidebar */
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    height: 100vh;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.header p {
+    font-size: 1.2rem;
+    color: #B3B3B3;
+}
+
+/* Form and Button */
+.form-container {
+    margin: 20px 0;
+}
+
+input[type="text"] {
+    width: 70%;
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #303030;
+    border-radius: 8px 0 0 8px;
+    border: 1px solid #505050;
+    color: white;
+    outline: none;
+}
+
+input[type="text"]::placeholder {
+    color: #B3B3B3;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #FF0000;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #CC0000;
+}
+
+/* Thumbnails Grid */
+.thumbnail-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.thumbnail {
+    width: 30%;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    background-color: #202020;
+}
+
+.thumbnail img {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.thumbnail:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .thumbnail {
+        width: 45%;
+    }
+}
+
+@media (max-width: 480px) {
+    .thumbnail {
+        width: 100%;
+    }
+}
